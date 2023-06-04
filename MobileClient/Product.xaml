@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobileClient.Class"
+             x:Class="MobileClient.Product">
+    <VerticalStackLayout>
+        <Entry Placeholder="Nazwa" Margin="1" Text="{Binding Name, Mode=TwoWay}"/>
+        <Entry Placeholder="Kod kreskowy" Margin="1" Text="{Binding Barcode, Mode=TwoWay}"/>
+        <Picker Title="Sklep" HorizontalOptions="Fill" Margin="1" x:Name="pick" SelectedItem="{Binding Shop, Mode=TwoWay}" ItemsSource="{x:Static local:Shop.ListShops}"/>
+        <Entry Placeholder="Cena" Keyboard="Numeric" Margin="1" Text="{Binding Price, Mode=TwoWay}"/>
+        <Entry Placeholder="Ilość" Keyboard="Numeric" Margin="1" Text="{Binding Qty, Mode=TwoWay}"/>
+        <Button x:Name="save" Text="Dodaj" Clicked="save_Clicked" Margin="1"/>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MobileClient.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MobileClient"
+    FlyoutBackground="White"
+    >
+    <FlyoutItem Title="Sklepy" Icon="home">
+        <ShellContent
+        Title="Sklepy"
+        ContentTemplate="{DataTemplate local:Shops}"
+        Route="Shops" />
+    </FlyoutItem>
+    <FlyoutItem Title="Produkty" Icon="home">
+        <ShellContent
+        Title="Produkty"
+        ContentTemplate="{DataTemplate local:Products}"
+        Route="Products" />
+    </FlyoutItem>
+    <FlyoutItem Title="Dodaj produkt" Icon="home" IsVisible="False">
+        <ShellContent
+        Title="Dodaj produkt"
+        ContentTemplate="{DataTemplate local:Product}"
+        Route="Product"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Koszyk" Icon="home">
+        <ShellContent
+        Title="Koszyk"
+        ContentTemplate="{DataTemplate local:Cart}"
+        Route="Cart"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Skanuj" Icon="home" IsVisible="False">
+        <ShellContent x:Name="Scan"
+        Title="Skanuj"
+        ContentTemplate="{DataTemplate local:BarcodeScanner}"
+        Route="BarcodeScanner"/>
+    </FlyoutItem>
+    <FlyoutItem Title="Ustawienia" Icon="home">
+        <ShellContent
+        Title="Ustawienia"
+        ContentTemplate="{DataTemplate local:Settings}"
+        Route="Settings" />
+    </FlyoutItem>
+</Shell>

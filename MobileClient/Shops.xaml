@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobileClient.Class"
+             x:Class="MobileClient.Shops">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            <ListView
+                SemanticProperties.Description="Sklepy"
+                HeightRequest="500"
+                x:Name="list" ItemsSource="{x:Static local:Shop.Shops}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding ShowName}" HorizontalOptions="Center" />
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Synchronizuj"
+                SemanticProperties.Hint="Synchronizacja"
+                Clicked="OnCounterClicked"
+                 />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

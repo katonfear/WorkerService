@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobileClient.QtyPopup"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Color="Transparent"
+             >
+    <Frame BorderColor="Gray"
+       CornerRadius="10">
+        <StackLayout Margin="0">
+            <StackLayout BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="X" Grid.Column="1" TextColor="White" BackgroundColor="Red" x:Name="close" Clicked="close_Clicked"/>
+                </Grid>
+            </StackLayout>
+            <VerticalStackLayout>
+                <Entry Placeholder="Ilość" Keyboard="Numeric" Text="{Binding Qty}"/>
+                <Entry Placeholder="Cena" Keyboard="Numeric" Text="{Binding Price}"/>
+                <Button Text="Ustaw" x:Name="Set" Clicked="Set_Clicked"/>
+            </VerticalStackLayout>
+        </StackLayout>
+    </Frame>
+</toolkit:Popup>

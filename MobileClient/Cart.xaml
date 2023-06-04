@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zoft="http://zoft.MauiExtensions/Controls"
+             x:Class="MobileClient.Cart"
+             x:Name="cart">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout x:Name="CartList"
+                VerticalOptions="Fill" 
+                HorizontalOptions="Fill" IsVisible="true">
+                <zoft:AutoCompleteEntry
+                    Placeholder="Wybierz produkt"
+                    ItemsSource="{Binding FilteredList}"
+                    x:Name="selProd"
+                    TextMemberPath="Name"
+                    DisplayMemberPath="Name"
+                    TextChangedCommand="{Binding TextChangedCommand}"
+                    SuggestionChosen="selProd_SuggestionChosen"
+                    >
+                </zoft:AutoCompleteEntry>
+            </StackLayout>
+            <Border Stroke="gray" StrokeThickness="1" Padding="1" Margin="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,10,10,10" />
+                </Border.StrokeShape>
+                <StackLayout>
+                    <Border Stroke="black" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <ListView x:Name="SelectedItems" MinimumHeightRequest="100">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Border Margin="1" Padding="1" StrokeThickness="1" Stroke="Silver">
+                                            <Grid Padding="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0"
+                                                   Text="{Binding Name}"
+                                                   FontAttributes="Bold" />
+                                                <Label Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Text="{Binding Shop}"
+                                                   FontAttributes="Italic"
+                                                   VerticalOptions="End" />
+                                                <Button Text="Kupiony" BackgroundColor="LightGreen" Grid.Column="1" Grid.RowSpan="2" Margin="1,5" x:Name="Purchased" Clicked="Purchased_Clicked"/>
+                                                <Button Text="Usuń" BackgroundColor="Red" Grid.Column="2" Grid.RowSpan="2" Margin="1,5" x:Name="Delete" Clicked="Delete_Clicked"/>
+                                            </Grid>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Border>
+                    <Button x:Name="save" Text="Zapisz koszyk" BackgroundColor="Blue" Clicked="save_Clicked"/>
+                </StackLayout>
+            </Border>
+            <Border Stroke="gray" StrokeThickness="1" Padding="1" Margin="1">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10,10,10,10" />
+                </Border.StrokeShape>
+                <StackLayout x:Name="Purchased"
+                VerticalOptions="Fill" 
+                HorizontalOptions="Fill" IsVisible="true">
+                    <Border Stroke="black" StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10,10,10,10" />
+                        </Border.StrokeShape>
+                        <ListView x:Name="PurchasedItems" MinimumHeightRequest="100">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Border Margin="1" Padding="1" StrokeThickness="1" Stroke="Silver">
+                                            <Grid Padding="10">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0"
+                                           Text="{Binding ShowNameLong}"
+                                           FontAttributes="Bold" Margin="10"/>
+                                                <Button Text="Usuń" BackgroundColor="Red" Grid.Column="1" Margin="1,5" x:Name="DeletePD" Clicked="DeletePD_Clicked"/>
+                                            </Grid>
+                                        </Border>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </Border>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="savePurchased" Text="Zapisz kupione" BackgroundColor="Aqua" Clicked="savePurchased_Clicked"/>
+                        <Button Text="Skanuj" Clicked="Button_Clicked" BackgroundColor="Green" Grid.Column="1"/>
+                    </Grid>
+                </StackLayout>
+            </Border>
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Text="Wyślij do serwera" x:Name="sendToServer" Clicked="sendToServer_Clicked" BackgroundColor="LightGreen"/>
+                    <Button Text="Usuń wszystkie" BackgroundColor="Red" Grid.Column="1" x:Name="ClearAll" Clicked="ClearAll_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
