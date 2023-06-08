@@ -10,13 +10,13 @@
             VerticalOptions="Center">
             <ListView
                 SemanticProperties.Description="Sklepy"
-                HeightRequest="500"
+                HeightRequest="400"
                 x:Name="list" ItemsSource="{x:Static local:Shop.Shops}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <VerticalStackLayout>
-                                <Label Text="{Binding ShowName}" HorizontalOptions="Center" />
+                                <Label Text="{Binding ShowName}" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0"/>
                             </VerticalStackLayout>
                         </ViewCell>
                     </DataTemplate>

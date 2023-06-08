@@ -3,12 +3,12 @@
 open Newtonsoft.Json
 open System.Collections.ObjectModel
 
-type Product(nameIn: string, barcodeIn: string, priceIn: double, shopIn: string, qtyIn: int) =
+type Product(nameIn: string, barcodeIn: string, priceIn: double, shopIn: string, qtyIn: double) =
     let mutable name: string = ""
     let mutable barcode: string = ""
     let mutable price: double = -1
     let mutable shop: string = ""
-    let mutable qty: int = -1
+    let mutable qty: double = -1
     do
         name <- nameIn
         barcode <- barcodeIn

@@ -20,103 +20,89 @@
                     >
                 </zoft:AutoCompleteEntry>
             </StackLayout>
-            <Border Stroke="gray" StrokeThickness="1" Padding="1" Margin="1">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10,10,10,10" />
-                </Border.StrokeShape>
+            <Frame BorderColor="Gray" CornerRadius="5" Padding="1" Margin="1">
                 <StackLayout>
-                    <Border Stroke="black" StrokeThickness="1">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10,10,10,10" />
-                        </Border.StrokeShape>
-                        <ListView x:Name="SelectedItems" MinimumHeightRequest="100">
-                            <ListView.ItemTemplate>
+                    <Frame BorderColor="black" CornerRadius="5" MinimumHeightRequest="100">
+                        <CollectionView x:Name="SelectedItems" ItemsLayout="VerticalList" MinimumHeightRequest="100">
+                            <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell>
-                                        <Border Margin="1" Padding="1" StrokeThickness="1" Stroke="Silver">
-                                            <Grid Padding="10">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Label Grid.Column="0"
-                                                   Text="{Binding Name}"
-                                                   FontAttributes="Bold" />
-                                                <Label Grid.Row="1"
-                                                   Grid.Column="0"
-                                                   Text="{Binding Shop}"
-                                                   FontAttributes="Italic"
-                                                   VerticalOptions="End" />
-                                                <Button Text="Kupiony" BackgroundColor="LightGreen" Grid.Column="1" Grid.RowSpan="2" Margin="1,5" x:Name="Purchased" Clicked="Purchased_Clicked"/>
-                                                <Button Text="Usuń" BackgroundColor="Red" Grid.Column="2" Grid.RowSpan="2" Margin="1,5" x:Name="Delete" Clicked="Delete_Clicked"/>
-                                            </Grid>
-                                        </Border>
-                                    </ViewCell>
+                                    <StackLayout MinimumHeightRequest="40">
+                                        <Grid Padding="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="4" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0"
+                                                       Text="{Binding Name}"
+                                                       FontAttributes="Bold" />
+                                            <Label Grid.Row="1"
+                                                       Grid.Column="0"
+                                                       Text="{Binding Shop}"
+                                                       FontAttributes="None"
+                                                       VerticalOptions="End" />
+                                            <Button Text="Kupiony" HeightRequest="40" BackgroundColor="LightGreen" Grid.Column="1" Grid.RowSpan="2" Margin="1" x:Name="Purchased" Clicked="Purchased_Clicked"/>
+                                            <Button Text="Usuń" HeightRequest="40" BackgroundColor="Red" Grid.Column="2" Grid.RowSpan="2" Margin="1" x:Name="Delete" Clicked="Delete_Clicked"/>
+                                            <BoxView Color="Gray" HeightRequest="2" Grid.ColumnSpan="3" Margin="0,2"  HorizontalOptions="Fill" Grid.Row="2" />
+                                        </Grid>
+                                    </StackLayout>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Border>
-                    <Button x:Name="save" Text="Zapisz koszyk" BackgroundColor="Blue" Clicked="save_Clicked"/>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <Button x:Name="save" Text="Zapisz koszyk" BackgroundColor="Blue" Clicked="save_Clicked" Margin="1"/>
                 </StackLayout>
-            </Border>
-            <Border Stroke="gray" StrokeThickness="1" Padding="1" Margin="1">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10,10,10,10" />
-                </Border.StrokeShape>
+            </Frame>
+            <Frame BorderColor="gray" CornerRadius="5" Padding="1" Margin="1">
                 <StackLayout x:Name="Purchased"
                 VerticalOptions="Fill" 
                 HorizontalOptions="Fill" IsVisible="true">
-                    <Border Stroke="black" StrokeThickness="1">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="10,10,10,10" />
-                        </Border.StrokeShape>
-                        <ListView x:Name="PurchasedItems" MinimumHeightRequest="100">
-                            <ListView.ItemTemplate>
+                    <Frame CornerRadius="5" BorderColor="black" MinimumHeightRequest="100">
+                        <CollectionView x:Name="PurchasedItems" MinimumHeightRequest="100">
+                            <CollectionView.ItemTemplate>
                                 <DataTemplate>
-                                    <ViewCell >
-                                        <Border Margin="1" Padding="1" StrokeThickness="1" Stroke="Silver">
-                                            <Grid Padding="10">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*"/>
-                                                    <ColumnDefinition Width="Auto"/>
-                                                </Grid.ColumnDefinitions>
-                                                <Label Grid.Column="0"
-                                           Text="{Binding ShowNameLong}"
-                                           FontAttributes="Bold" Margin="10"/>
-                                                <Button Text="Usuń" BackgroundColor="Red" Grid.Column="1" Margin="1,5" x:Name="DeletePD" Clicked="DeletePD_Clicked"/>
-                                            </Grid>
-                                        </Border>
-                                    </ViewCell>
+                                    <StackLayout MinimumHeightRequest="30">
+                                        <Grid Padding="5">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="4" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding ShowNameLong}"  FontAttributes="Bold" Margin="10"/>
+                                            <Button Text="Usuń" HeightRequest="40" BackgroundColor="Red" Grid.Column="1" Margin="1" x:Name="DeletePD" Clicked="DeletePD_Clicked"/>
+                                            <BoxView Color="Gray" HeightRequest="2" Grid.ColumnSpan="2" HorizontalOptions="Fill" Grid.Row="1" />
+                                        </Grid>
+                                    </StackLayout>
                                 </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Border>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="savePurchased" Text="Zapisz kupione" BackgroundColor="Aqua" Clicked="savePurchased_Clicked"/>
-                        <Button Text="Skanuj" Clicked="Button_Clicked" BackgroundColor="Green" Grid.Column="1"/>
+                        <Button Margin="1" x:Name="savePurchased" Text="Zapisz kupione" BackgroundColor="Aqua" Clicked="savePurchased_Clicked"/>
+                        <Button Margin="1" Text="Skanuj" Clicked="Button_Clicked" BackgroundColor="Green" Grid.Column="1"/>
                     </Grid>
                 </StackLayout>
-            </Border>
+            </Frame>
             <StackLayout>
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="50*"/>
                         <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Text="Wyślij do serwera" x:Name="sendToServer" Clicked="sendToServer_Clicked" BackgroundColor="LightGreen"/>
-                    <Button Text="Usuń wszystkie" BackgroundColor="Red" Grid.Column="1" x:Name="ClearAll" Clicked="ClearAll_Clicked"/>
+                    <Button Margin="1" Text="Wyślij do serwera" x:Name="sendToServer" Clicked="sendToServer_Clicked" BackgroundColor="LightGreen"/>
+                    <Button Margin="1" Text="Usuń wszystkie" BackgroundColor="Red" Grid.Column="1" x:Name="ClearAll" Clicked="ClearAll_Clicked"/>
                 </Grid>
             </StackLayout>
         </StackLayout>

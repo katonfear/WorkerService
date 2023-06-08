@@ -1,4 +1,5 @@
-﻿using MobileClient.Class;
+﻿using CommunityToolkit.Maui.Alerts;
+using MobileClient.Class;
 using MobileClient.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -47,11 +48,23 @@ namespace MobileClient
                             DisplayAlert("Alert", msg.Message, "OK");
                         else
                             foreach (var prod1 in list) {
-                                Class.Product.Products.Add(prod1);
+                                if (!Class.Product.Products.Any(p => p.Name == prod1.Name && p.Barcode == prod1.Barcode))
+                                {
+                                    Class.Product.Products.Add(prod1);
+                                }
                             }
                         using (DbControler conn = new DbControler()) 
                         {
                             conn.SaveProducts(Class.Product.Products.ToList());
+                        }
+                        if (msg != null && msg.Message == "all products was added") 
+                        {
+                            QtyPopup.showMessage($"Dodano produkt {Model.Name}");
+                            Model.Barcode = "";
+                            Model.Name = String.Empty;
+                            Model.Price = 0;
+                            Model.Qty = 0;
+                            Model.Shop = "Wszystkie";
                         }
                     }
                 }

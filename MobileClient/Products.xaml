@@ -16,7 +16,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <VerticalStackLayout>
-                                <Label Text="{Binding ShowName}" HorizontalOptions="Center" />
+                                <Label Text="{Binding ShowName}" HorizontalOptions="Center" VerticalOptions="Center" Margin="0,10,0,0" />
                             </VerticalStackLayout>
                         </ViewCell>
                     </DataTemplate>

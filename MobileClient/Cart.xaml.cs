@@ -17,9 +17,9 @@ namespace MobileClient
         {
             InitializeComponent();
             selProd.BindingContext = new ProductItemViewModel();
-            SelectedItems.SetBinding(ListView.ItemsSourceProperty, "ProductsToPurchase");
+            SelectedItems.SetBinding(CollectionView.ItemsSourceProperty, "ProductsToPurchase");
             SelectedItems.BindingContext = cartListModel;
-            PurchasedItems.SetBinding(ListView.ItemsSourceProperty, "ProductsPurchased");
+            PurchasedItems.SetBinding(CollectionView.ItemsSourceProperty, "ProductsPurchased");
             PurchasedItems.BindingContext = cartListModel;
             try
             {
@@ -189,6 +189,8 @@ namespace MobileClient
                         {
                             cartListModel.ProductsPurchased.Clear();
                             cartListModel.ProductsToPurchase.Clear();
+                            QtyPopup.showMessage("Dane zostały zapisane.");
+
                         }
                     }
                 }
@@ -237,6 +239,7 @@ namespace MobileClient
             try
             {
                 var popup = new QtyPopup(product);
+                popup.Size = new Size() { Height = 300, Width = 300 };
                 popup.PriceQty += Popup_PriceQty;
                 this.ShowPopup(popup);
             }
