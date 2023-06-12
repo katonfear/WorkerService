@@ -57,11 +57,17 @@ namespace MobileClient.Models
 
         internal void FilterList(string filter)
         {
-            SelectedItem = null;
-            FilteredList.Clear();
-
-            FilteredList.AddRange(GetProductItems().Where(t => (t.Name.Contains(filter, StringComparison.CurrentCultureIgnoreCase) && !string.IsNullOrEmpty(filter)) ||
-                                                   (t.Shop.Contains(filter, StringComparison.CurrentCultureIgnoreCase) && !string.IsNullOrEmpty(filter))));
+            try
+            {
+                SelectedItem = null;
+                FilteredList.Clear();
+                if (filter.Length > 2)
+                {
+                    FilteredList.AddRange(GetProductItems().Where(t => (t.Name.Contains(filter, StringComparison.CurrentCultureIgnoreCase) && !string.IsNullOrEmpty(filter)) ||
+                                                           (t.Shop.Contains(filter, StringComparison.CurrentCultureIgnoreCase) && !string.IsNullOrEmpty(filter))));
+                }
+            }
+            catch { }
         }
 
     }

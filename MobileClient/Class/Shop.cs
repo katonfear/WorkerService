@@ -56,7 +56,7 @@ namespace MobileClient.Class
         public static List<string> GetShopNames() 
         {
             var list = Shops.Select(shop => shop.Name).ToList();
-            list.Insert(0,"Wszystkie");
+            //list.Insert(0,"Wszystkie");
             return list;
         }
     }
